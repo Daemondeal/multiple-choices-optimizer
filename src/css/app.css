@@ -2,6 +2,21 @@
     --nav-border-color: rgba(115, 130, 140, 0.2);
 }
 
+/* Remove arrows from number inputs */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  opacity: 1;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield !important;
+}
+
 .container-fluid {
     box-shadow: 0 1px 0 var(--nav-border-color);
 }

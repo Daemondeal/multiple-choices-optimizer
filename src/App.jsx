@@ -12,6 +12,8 @@ export default class App extends React.Component {
 
         this.state = {
             testFormula: null,
+            minimumPoints: null,
+            questionsNumber: null,
         };
     }
 
@@ -31,11 +33,80 @@ export default class App extends React.Component {
         };
     }
 
+    validateFractionInput(event, selector) {
+        const rawText = event.target[selector].value;
+        const validationRegex = /^[0-9./]*$/;
+
+        if (!rawText.match(validationRegex))
+            return null;
+
+        if (rawText.indexOf("/") !== -1) {
+            const fraction = rawText.split("/");
+
+            if (fraction.length > 2)
+                return null;
+            
+            return parseFloat(fraction[0]) / parseFloat(fraction[1]);
+        } else {
+            return parseFloat(rawText);
+        }
+    }
+
+    validateIntegerInput(event, selector) {
+        const rawText = event.target[selector].value;
+        const validationRegex = /^[0-9]*$/;
+
+        if (!rawText.match(validationRegex))
+            return null;
+
+        return parseInt(rawText);
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        const correctPoints = this.validateFractionInput(event, "correct-answers");
+        const incorrectPenalty = this.validateFractionInput(event, "incorrect-answers");
+        const startingPoints = this.validateFractionInput(event, "starting-points");
+        const minimumPoints = this.validateFractionInput(event, "minimum-points");
+        const questionsNumber = this.validateIntegerInput(event, "questions-number");
+
+        const verificationArray = [
+            correctPoints,
+            incorrectPenalty,
+            startingPoints,
+            minimumPoints,
+            questionsNumber
+        ];
+
+        // TODO: Maybe this should tell the user
+        //       what input is invalid
+        for (let element of verificationArray)
+            if (element === null)
+                return;
+
+        const testFormula = (function(correct, incorrect) {
+            return startingPoints + correct * correctPoints - incorrect * incorrectPenalty;
+        });
+
+        this.setState({
+            testFormula,
+            minimumPoints,
+            questionsNumber,
+        });
+    }
+
     render() {
+        const { testFormula, questionsNumber, minimumPoints } = this.state;
+
+
         return (
             <>
                 <nav className="container-fluid">
                     <ul>
+                        <li>{strings.title}</li>
+                        <li>|</li>
                         <li><a href="#" className="contrast" onClick={this.createLanguageHandler("en")}>{strings.english}</a></li>
                         <li><a href="#" className="contrast" onClick={this.createLanguageHandler("it")}>{strings.italian}</a></li>
                     </ul>
@@ -45,15 +116,12 @@ export default class App extends React.Component {
                         <li><a href="#" className="contrast" onClick={this.createThemeHandler("dark")}>Dark</a></li>
                     </ul>
                 </nav>
-                <header className="container" style={{"paddingTop": "var(--block-spacing-vertical)"}}>
-                    <h1>{strings.title}</h1>
-                </header>
     
                 <main className="container">
                     <section id="form">
                         <article>
                             <h2>{strings.testParameters}</h2>
-                            <form>
+                            <form onSubmit={(e) => this.handleSubmit(e)}>
                                 <div className="grid">
                                     {strings.correctPoints}
                                     <input type="text" id="correct-answers" name="correct-answers" placeholder={strings.correctPointsPlaceholder} defaultValue="2" />
@@ -71,12 +139,12 @@ export default class App extends React.Component {
 
                                 <div className="grid">
                                     {strings.questionsNumber}
-                                    <input type="text" id="questions-number" name="questions-number" placeholder={strings.questionsNumberPlaceholder} defaultValue="15" />
+                                    <input type="number" id="questions-number" name="questions-number" placeholder={strings.questionsNumberPlaceholder} defaultValue="15" />
                                 </div>
 
                                 <div className="grid">
                                     {strings.minimumPoints}
-                                    <input type="text" id="minimum-points" name="minimum-points" placeholder={strings.minimumPointsPlaceholder} defaultValue="30" />
+                                    <input type="text" id="minimum-points" name="minimum-points" placeholder={strings.minimumPointsPlaceholder} defaultValue="15" />
                                 </div>
 
                                 <input type="submit" className="submit-calculation" value={strings.submitCalculations} />
@@ -86,9 +154,9 @@ export default class App extends React.Component {
     
                     <section id="results">
                         <TestStats 
-                            formula={(c, i) => c * 2 - (i * 2/3)}
-                            questionsNumber={15}
-                            minimumPoints={15}
+                            formula={testFormula}
+                            questionsNumber={questionsNumber}
+                            minimumPoints={minimumPoints}
                         />
                     </section>
                 </main>
