@@ -41,8 +41,8 @@ export default class App extends React.Component {
                     </ul>
 
                     <ul>
-                        <li><a href="#" className="contrast" onClick={() => setTheme("light")}>Light</a></li>
-                        <li><a href="#" className="contrast" onClick={() => setTheme("dark")}>Dark</a></li>
+                        <li><a href="#" className="contrast" onClick={this.createThemeHandler("light")}>Light</a></li>
+                        <li><a href="#" className="contrast" onClick={this.createThemeHandler("dark")}>Dark</a></li>
                     </ul>
                 </nav>
                 <header className="container" style={{"paddingTop": "var(--block-spacing-vertical)"}}>
