@@ -34,31 +34,44 @@ export default class App extends React.Component {
     }
 
     validateFractionInput(event, selector) {
-        const rawText = event.target[selector].value;
+        const target = event.target[selector];
+        const rawText = target.value;
         const validationRegex = /^[0-9./]*$/;
 
-        if (!rawText.match(validationRegex))
+        if (!rawText.match(validationRegex)) {
+            target.setAttribute("aria-invalid", "true");
             return null;
+        }
 
         if (rawText.indexOf("/") !== -1) {
             const fraction = rawText.split("/");
 
-            if (fraction.length > 2)
+            if (fraction.length > 2) {
+                target.setAttribute("aria-invalid", "true");
                 return null;
+            }
+
+            target.removeAttribute("aria-invalid");
             
             return parseFloat(fraction[0]) / parseFloat(fraction[1]);
         } else {
+
+            target.removeAttribute("aria-invalid");
             return parseFloat(rawText);
         }
     }
 
     validateIntegerInput(event, selector) {
-        const rawText = event.target[selector].value;
+        const target = event.target[selector];
+        const rawText = target.value;
         const validationRegex = /^[0-9]*$/;
 
-        if (!rawText.match(validationRegex))
+        if (!rawText.match(validationRegex)) {
+            target.setAttribute("aria-invalid", "true");
             return null;
+        }
 
+        target.removeAttribute("aria-invalid");
         return parseInt(rawText);
 
     }
@@ -80,8 +93,6 @@ export default class App extends React.Component {
             questionsNumber
         ];
 
-        // TODO: Maybe this should tell the user
-        //       what input is invalid
         for (let element of verificationArray)
             if (element === null)
                 return;
