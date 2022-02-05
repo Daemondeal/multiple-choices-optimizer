@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.jsx",
+  entry: path.join(__dirname, "src", "index.jsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.[hash].js",
@@ -16,14 +16,21 @@ module.exports = {
     historyApiFallback: true,
     open: true,
   },
+  resolve: {
+    extensions: [".jsx", ".js"]
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },

@@ -1,0 +1,11 @@
+.submit-calculation {
+    margin-top: 2rem ;
+}
+
+.row-fail {
+    color: red;
+}
+
+.row-success {
+    color: green;
+}
