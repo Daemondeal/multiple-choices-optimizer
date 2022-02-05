@@ -22,6 +22,8 @@ let strings = new LocalizedStrings({
 
         submitCalculations: "Calculate",
 
+        minimizeSwitchLabel: "Minimize",
+
     },
     it: {
         title: "Multiple Choice Optimizer",
@@ -44,6 +46,7 @@ let strings = new LocalizedStrings({
 
         submitCalculations: "Calcola",
 
+        minimizeSwitchLabel: "Minimizza",
     }
 });
 
