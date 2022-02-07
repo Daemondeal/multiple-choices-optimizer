@@ -48,7 +48,7 @@ let strings = new LocalizedStrings({
 
         submitCalculations: "Calcola",
 
-        bestStrategyExplaination: "Dando {0} risposte, devono esserne corrette {1}. Così facendo, puoi passare l'esame con solo il {2}% delle risposte corrette.",
+        bestStrategyExplaination: "Dando {0} risposte, {1} devono esserne corrette . Così facendo, puoi passare l'esame con solo il {2}% delle risposte corrette.",
         
 
         minimizeSwitchLabel: "Minimizza",
