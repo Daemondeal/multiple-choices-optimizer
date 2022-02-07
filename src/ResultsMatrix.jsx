@@ -93,23 +93,24 @@ class ResultsMatrix extends React.Component {
         }
         
         return (
-            <figure>
+            <>
                 <label htmlFor="switch">
                     <input type="checkbox" id="extend-switch" name="extend-switch" role="switch" onChange={() => this.handleMinimizeChange()} />
                     {strings.minimizeSwitchLabel}
                 </label>
-
-                <table>
-                    <thead>
-                        <tr>
-                            {heading}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {matrix}
-                    </tbody>
-                </table>        
-            </figure>
+                <figure>
+                    <table>
+                        <thead>
+                            <tr>
+                                {heading}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {matrix}
+                        </tbody>
+                    </table>        
+                </figure>
+            </>
         );
     }
 }

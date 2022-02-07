@@ -187,3 +187,6 @@ Cargo.lock
 *.pdb
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,react,node,rust
+
+
+build/

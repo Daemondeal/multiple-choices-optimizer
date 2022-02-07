@@ -22,6 +22,8 @@ let strings = new LocalizedStrings({
 
         submitCalculations: "Calculate",
 
+        bestStrategyExplaination: "By answering to {0} questions, {1} have to be right. Doing this you can pass the exam while only being correct on {2}% of the questions you answer.",
+
         minimizeSwitchLabel: "Minimize",
 
     },
@@ -45,6 +47,9 @@ let strings = new LocalizedStrings({
         minimumPointsPlaceholder: "Minimo",
 
         submitCalculations: "Calcola",
+
+        bestStrategyExplaination: "Dando {0} risposte, devono esserne corrette {1}. Così facendo, puoi passare l'esame con solo il {2}% delle risposte corrette.",
+        
 
         minimizeSwitchLabel: "Minimizza",
     }
