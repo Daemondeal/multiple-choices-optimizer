@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/app.css";
-import TestStats from "./testStats";
+import TestStats from "./TestStats";
 import strings from "./strings";
 import { setTheme, setLanguage, initSettings } from "./settings";
 

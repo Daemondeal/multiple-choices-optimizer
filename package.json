@@ -5,9 +5,7 @@
   "main": "src/index.jsx",
   "scripts": {
     "dev": "npx webpack server",
-    "build:wasm": "cargo build --manifest-path=formula_parser/Cargo.toml --target wasm32-unknown-unknown",
-    "build:bindgen": "cd formula_parser && wasm-bindgen target/wasm32-unknown-unknown/debug/formula_parser.wasm --out-dir ../build --no-typescript && cd ..",
-    "build": "npm run build:wasm && npm run build:bindgen && npx webpack"
+    "build": "npx webpack"
   },
   "keywords": [],
   "author": "",

@@ -20,9 +20,11 @@ let strings = new LocalizedStrings({
         questionsNumberPlaceholder: "Questions",
         minimumPointsPlaceholder: "Minimum",
 
-        submitCalculations: "Calculate",
+        matrixExplainationRows: "Rows: number of questions left blank.",
+        matrixExplainationCols: "Columns: number of questions answered correctly.",
+        matrixExplainationCell: "Cells: final score.",
 
-        bestStrategyExplaination: "By answering to {0} questions, {1} have to be right. Doing this you can pass the exam while only being correct on {2}% of the questions you answer.",
+        submitCalculations: "Calculate",
 
         minimizeSwitchLabel: "Minimize",
 
@@ -40,6 +42,10 @@ let strings = new LocalizedStrings({
         questionsNumber: "Numero di domande",
         minimumPoints: "Minimo di punti per passare",
 
+        matrixExplainationRows: "Righe: numero di domande lasciate in bianco.",
+        matrixExplainationCols: "Colonne: numero di domande risposte correttamente.",
+        matrixExplainationCell: "Celle: punteggio raggiunto.",
+
         correctPointsPlaceholder: "Punti",
         incorrectPenaltyPlaceholder: "Penalità",
         startingPointsPlaceholder: "Punti Iniziali",
@@ -47,9 +53,6 @@ let strings = new LocalizedStrings({
         minimumPointsPlaceholder: "Minimo",
 
         submitCalculations: "Calcola",
-
-        bestStrategyExplaination: "Dando {0} risposte, {1} devono esserne corrette . Così facendo, puoi passare l'esame con solo il {2}% delle risposte corrette.",
-        
 
         minimizeSwitchLabel: "Minimizza",
     }

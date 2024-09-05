@@ -81,7 +81,7 @@ class ResultsMatrix extends React.Component {
 
         for (let i = colStart; i <= questionsNumber; i++) {
             let row = [];
-            row.push(<td key={`r${i}_h`}>{i}</td>);
+            row.push(<td key={`r${i}_h`}>{questionsNumber-i}</td>);
 
             for (let j = rowStart; j <= questionsNumber; j++) {
                 if (j <= i)

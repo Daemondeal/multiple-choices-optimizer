@@ -39,14 +39,13 @@ function TestStats({formula, minimumPoints, questionsNumber}) {
     if (formula == null)
         return <></>;
 
-    const bestStrategy = getBestChances(formula, minimumPoints, questionsNumber);
-
     return (
         <article>
-            <p>
-                {strings.formatString(strings.bestStrategyExplaination, bestStrategy.questionsGiven, bestStrategy.correct, (bestStrategy.correctRatio * 100).toFixed(2))} <br/>
-            </p>
-
+            <ul>
+                <li>{strings.matrixExplainationRows}</li>
+                <li>{strings.matrixExplainationCols}</li>
+                <li>{strings.matrixExplainationCell}</li>
+            </ul>
             <ResultsMatrix
                 formula={formula}
                 minimumPoints={minimumPoints}
